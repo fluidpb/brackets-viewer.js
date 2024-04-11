@@ -1,0 +1,543 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="../dist/brackets-viewer.min.css" />
+  <script type="text/javascript" src="../dist/brackets-viewer.min.js"></script>
+
+  <title>Bracket</title>
+
+  <!-- You can choose a default theme or make you own. -->
+  <link rel="stylesheet" href="themes/light.css" />  
+  <script>
+    const data = {
+        "group": [
+          {
+            "id": 0,
+            "number": 1,
+            "stage_id": 0
+          }
+        ],
+        "match": [
+          {
+            "id": "69e716f2-7e7c-442a-9d80-f4bb116e1e0c",
+            "number": 1,
+            "status": 4,
+            "group_id": 0,
+            "round_id": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff",
+              "score": 2,
+              "result": "win",
+              "position": 1
+            },
+            "opponent2": {
+              "id": "0ff6de9f-7078-4e44-9d42-5bd1be4f33d8",
+              "score": 1,
+              "result": "loss",
+              "position": 8
+            },
+            "child_count": 3
+          },
+          {
+            "id": "a0c594c3-85a7-4d5a-a50b-d746bf0e8368",
+            "number": 2,
+            "status": 2,
+            "group_id": 0,
+            "round_id": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "9c7bd11e-f9c7-4202-9c5c-4d52121cf7ab",
+              "position": 4
+            },
+            "opponent2": {
+              "id": "e4852dcc-b009-4146-bf35-3969a00fbefd",
+              "position": 5
+            },
+            "child_count": 3
+          },
+          {
+            "id": "eee8da56-2c2c-4dfe-ad99-84cdd45f55d5",
+            "number": 3,
+            "status": 2,
+            "group_id": 0,
+            "round_id": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "a4900014-e069-4fd7-a86a-0dd2be07bbc3",
+              "position": 2
+            },
+            "opponent2": {
+              "id": "f68343ab-0e50-4f8c-bad7-f3beb33b4f34",
+              "position": 7
+            },
+            "child_count": 3
+          },
+          {
+            "id": "50cbfe5c-b094-4680-9155-55078e289e9a",
+            "number": 4,
+            "status": 2,
+            "group_id": 0,
+            "round_id": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "71385851-e84f-4d8f-97c8-a70074bcd053",
+              "position": 3
+            },
+            "opponent2": {
+              "id": "12b1761b-726b-4aa4-bc3a-e083ae8dbb2c",
+              "position": 6
+            },
+            "child_count": 3
+          },
+          {
+            "id": 4,
+            "number": 1,
+            "status": 1,
+            "group_id": 0,
+            "round_id": 1,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff"
+            },
+            "opponent2": {
+              "id": null
+            },
+            "child_count": 3
+          },
+          {
+            "id": 5,
+            "number": 2,
+            "status": 0,
+            "group_id": 0,
+            "round_id": 1,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "child_count": 3
+          },
+          {
+            "id": 6,
+            "number": 1,
+            "status": 0,
+            "group_id": 0,
+            "round_id": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "child_count": 3
+          }
+        ],
+        "round": [
+          {
+            "id": 0,
+            "number": 1,
+            "group_id": 0,
+            "stage_id": 0
+          },
+          {
+            "id": 1,
+            "number": 2,
+            "group_id": 0,
+            "stage_id": 0
+          },
+          {
+            "id": 2,
+            "number": 3,
+            "group_id": 0,
+            "stage_id": 0
+          }
+        ],
+        "stage": [
+          {
+            "id": 0,
+            "name": "Elimination",
+            "type": "single_elimination",
+            "number": 1,
+            "settings": {
+              "size": 8,
+              "seedOrdering": ["inner_outer"],
+              "consolationFinal": false,
+              "matchesChildCount": 3
+            },
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          }
+        ],
+        "match_game": [
+          {
+            "id": 0,
+            "number": 1,
+            "status": 4,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff",
+              "score": 15,
+              "result": "win"
+            },
+            "opponent2": {
+              "id": "0ff6de9f-7078-4e44-9d42-5bd1be4f33d8",
+              "score": 11,
+              "result": "loss"
+            },
+            "parent_id": "69e716f2-7e7c-442a-9d80-f4bb116e1e0c"
+          },
+          {
+            "id": 1,
+            "number": 2,
+            "status": 4,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff",
+              "score": 11,
+              "result": "loss"
+            },
+            "opponent2": {
+              "id": "0ff6de9f-7078-4e44-9d42-5bd1be4f33d8",
+              "score": 15,
+              "result": "win"
+            },
+            "parent_id": "69e716f2-7e7c-442a-9d80-f4bb116e1e0c"
+          },
+          {
+            "id": 2,
+            "number": 3,
+            "status": 4,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff",
+              "score": 15,
+              "result": "win"
+            },
+            "opponent2": {
+              "id": "0ff6de9f-7078-4e44-9d42-5bd1be4f33d8",
+              "score": 11,
+              "result": "loss"
+            },
+            "parent_id": "69e716f2-7e7c-442a-9d80-f4bb116e1e0c"
+          },
+          {
+            "id": 3,
+            "number": 1,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "9c7bd11e-f9c7-4202-9c5c-4d52121cf7ab"
+            },
+            "opponent2": {
+              "id": "e4852dcc-b009-4146-bf35-3969a00fbefd"
+            },
+            "parent_id": "a0c594c3-85a7-4d5a-a50b-d746bf0e8368"
+          },
+          {
+            "id": 4,
+            "number": 2,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "9c7bd11e-f9c7-4202-9c5c-4d52121cf7ab"
+            },
+            "opponent2": {
+              "id": "e4852dcc-b009-4146-bf35-3969a00fbefd"
+            },
+            "parent_id": "a0c594c3-85a7-4d5a-a50b-d746bf0e8368"
+          },
+          {
+            "id": 5,
+            "number": 3,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "9c7bd11e-f9c7-4202-9c5c-4d52121cf7ab"
+            },
+            "opponent2": {
+              "id": "e4852dcc-b009-4146-bf35-3969a00fbefd"
+            },
+            "parent_id": "a0c594c3-85a7-4d5a-a50b-d746bf0e8368"
+          },
+          {
+            "id": 6,
+            "number": 1,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "a4900014-e069-4fd7-a86a-0dd2be07bbc3"
+            },
+            "opponent2": {
+              "id": "f68343ab-0e50-4f8c-bad7-f3beb33b4f34"
+            },
+            "parent_id": "eee8da56-2c2c-4dfe-ad99-84cdd45f55d5"
+          },
+          {
+            "id": 7,
+            "number": 2,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "a4900014-e069-4fd7-a86a-0dd2be07bbc3"
+            },
+            "opponent2": {
+              "id": "f68343ab-0e50-4f8c-bad7-f3beb33b4f34"
+            },
+            "parent_id": "eee8da56-2c2c-4dfe-ad99-84cdd45f55d5"
+          },
+          {
+            "id": 8,
+            "number": 3,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "a4900014-e069-4fd7-a86a-0dd2be07bbc3"
+            },
+            "opponent2": {
+              "id": "f68343ab-0e50-4f8c-bad7-f3beb33b4f34"
+            },
+            "parent_id": "eee8da56-2c2c-4dfe-ad99-84cdd45f55d5"
+          },
+          {
+            "id": 9,
+            "number": 1,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "71385851-e84f-4d8f-97c8-a70074bcd053"
+            },
+            "opponent2": {
+              "id": "12b1761b-726b-4aa4-bc3a-e083ae8dbb2c"
+            },
+            "parent_id": "50cbfe5c-b094-4680-9155-55078e289e9a"
+          },
+          {
+            "id": 10,
+            "number": 2,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "71385851-e84f-4d8f-97c8-a70074bcd053"
+            },
+            "opponent2": {
+              "id": "12b1761b-726b-4aa4-bc3a-e083ae8dbb2c"
+            },
+            "parent_id": "50cbfe5c-b094-4680-9155-55078e289e9a"
+          },
+          {
+            "id": 11,
+            "number": 3,
+            "status": 2,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "71385851-e84f-4d8f-97c8-a70074bcd053"
+            },
+            "opponent2": {
+              "id": "12b1761b-726b-4aa4-bc3a-e083ae8dbb2c"
+            },
+            "parent_id": "50cbfe5c-b094-4680-9155-55078e289e9a"
+          },
+          {
+            "id": 12,
+            "number": 1,
+            "status": 1,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff"
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 4
+          },
+          {
+            "id": 13,
+            "number": 2,
+            "status": 1,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff"
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 4
+          },
+          {
+            "id": 14,
+            "number": 3,
+            "status": 1,
+            "stage_id": 0,
+            "opponent1": {
+              "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff"
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 4
+          },
+          {
+            "id": 15,
+            "number": 1,
+            "status": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 5
+          },
+          {
+            "id": 16,
+            "number": 2,
+            "status": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 5
+          },
+          {
+            "id": 17,
+            "number": 3,
+            "status": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 5
+          },
+          {
+            "id": 18,
+            "number": 1,
+            "status": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 6
+          },
+          {
+            "id": 19,
+            "number": 2,
+            "status": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 6
+          },
+          {
+            "id": 20,
+            "number": 3,
+            "status": 0,
+            "stage_id": 0,
+            "opponent1": {
+              "id": null
+            },
+            "opponent2": {
+              "id": null
+            },
+            "parent_id": 6
+          }
+        ],
+        "participant": [
+          {
+            "id": "cbb4bfe1-8d59-4cc9-bf9e-669bf5a90eff",
+            "name": "Jason Ojeda / Guillermo Ojeda",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          },
+          {
+            "id": "a4900014-e069-4fd7-a86a-0dd2be07bbc3",
+            "name": "Asher Bai / Alan Bai",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          },
+          {
+            "id": "71385851-e84f-4d8f-97c8-a70074bcd053",
+            "name": "Gowtham Mulpuri / Robert Mulpuri",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          },
+          {
+            "id": "9c7bd11e-f9c7-4202-9c5c-4d52121cf7ab",
+            "name": "Masruque Ali / Bryan Ali",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          },
+          {
+            "id": "e4852dcc-b009-4146-bf35-3969a00fbefd",
+            "name": "Colin Hamilton / Marc Hamilton",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          },
+          {
+            "id": "12b1761b-726b-4aa4-bc3a-e083ae8dbb2c",
+            "name": "Binh Pham / Kurt Pham",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          },
+          {
+            "id": "f68343ab-0e50-4f8c-bad7-f3beb33b4f34",
+            "name": "Linh Tu / Mark Tu",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          },
+          {
+            "id": "0ff6de9f-7078-4e44-9d42-5bd1be4f33d8",
+            "name": "Sri Koneru / Atchuyta Koneru",
+            "tournament_id": "2beb7c37-11ff-482b-9878-4b319b7c07a7"
+          }
+        ]
+      }
+
+  </script>
+</head>
+
+<!-- TODO: rename "mask" to form -->
+<!-- TODO: Autofill the form with scores when opening it -->
+<!-- TODO: Use new FormData(document.querySelector('form')); -->
+
+<body style="background: gray;">
+  <div id="example" class="brackets-viewer"></div>
+  <script type="module">
+    await window.bracketsViewer.render({
+      stages: data.stage,
+      matches: data.match,
+      matchGames: data.match_game,
+      participants: data.participant,
+    }, {
+      clear: true,
+      selector: '#example',
+      customRoundName: (info, t) => {
+        // You have a reference to `t` in order to translate things.
+        // Returning `undefined` will fallback to the default round name in the current language.
+
+        if (info.fractionOfFinal === 1 / 2) {
+          if (info.groupType === 'single-bracket') {
+            // Single elimination
+            return 'Semi Finals'
+          } else {
+            // Double elimination
+            return `${t(`abbreviations.${info.groupType}`)} Semi Finals`
+          }
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
