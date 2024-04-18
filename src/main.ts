@@ -25,10 +25,12 @@ import * as lang from "./lang";
 import { Locale } from "./lang";
 import "./style.scss";
 import {
+    AssignCourtClickCallback,
     Config,
     InternalViewerData,
     MatchClickCallback,
     MatchGameWithMetadata,
+    MatchSwapCallback,
     MatchWithMetadata,
     OriginHint,
     ParticipantContainers,
@@ -64,6 +66,16 @@ export class BracketsViewer {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private _onAssignCourtClick: MatchClickCallback = (
+        match: MatchWithMetadata
+    ): void => {};
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private _onMatchSwapClick: MatchSwapCallback = (
+        participant: ParticipantResult
+    ): void => {};
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private _onMatchClick: MatchClickCallback = (
         match: MatchWithMetadata
     ): void => {};
@@ -79,6 +91,22 @@ export class BracketsViewer {
      */
     public set onMatchClicked(callback: MatchClickCallback) {
         this._onMatchClick = callback;
+    }
+
+    /**
+     * @deprecated Use `onMatchClick` in the `config` parameter of `viewer.render()`.
+     * @param callback A callback to be called when a match is clicked.
+     */
+    public set onAssignCourtClicked(callback: AssignCourtClickCallback) {
+        this._onAssignCourtClick = callback;
+    }
+
+    /**
+     * @deprecated Use `onMatchClick` in the `config` parameter of `viewer.render()`.
+     * @param callback A callback to be called when a match is clicked.
+     */
+    public set onMatchSwapClicked(callback: MatchSwapCallback) {
+        this._onMatchSwapClick = callback;
     }
 
     /**
@@ -117,6 +145,12 @@ export class BracketsViewer {
         };
 
         if (config?.onMatchClick) this._onMatchClick = config.onMatchClick;
+
+        if (config?.onAssignCourtClick)
+            this._onAssignCourtClick = config.onAssignCourtClick;
+
+        if (config?.onMatchSwapClick)
+            this._onMatchSwapClick = config.onMatchSwapClick;
 
         if (config?.onMatchLabelClick)
             this._onMatchLabelClick = config.onMatchLabelClick;
@@ -844,7 +878,7 @@ export class BracketsViewer {
     ): HTMLElement {
         const matchContainer = dom.createMatchContainer(match);
         const opponents = isMatch(match)
-            ? dom.createOpponentsContainer(() => this._onMatchClick(match))
+            ? dom.createOpponentsContainer()
             : dom.createOpponentsContainer();
 
         if (isMatch(match) && match.status >= Status.Completed)
@@ -884,6 +918,42 @@ export class BracketsViewer {
 
             this.renderMatchLabel(opponents, match);
             opponents.append(participant1, participant2);
+            if (
+                "editable" in match &&
+                match.editable &&
+                typeof match.id !== "number"
+            ) {
+                const actions = document.createElement("div");
+                actions.classList.add("actions");
+                if (
+                    match.opponent1?.score === undefined ||
+                    match.opponent2?.score === undefined
+                ) {
+                    const assignment = document.createElement("div");
+                    assignment.classList.add("assign-court");
+                    assignment.innerHTML = "Assign Court";
+                    assignment.addEventListener("click", () =>
+                        this._onAssignCourtClick(match)
+                    );
+                    actions.appendChild(assignment);
+                }
+
+                const edit = document.createElement("div");
+                edit.classList.add("edit-match");
+                edit.innerHTML = "Update Score";
+                edit.addEventListener("click", () => this._onMatchClick(match));
+
+                actions.appendChild(edit);
+                opponents.append(actions);
+            }
+
+            if ("court" in match && match.court) {
+                const court = document.createElement("div");
+                court.classList.add("court-num");
+                court.innerText = `Court ${match.court}`;
+                opponents.classList.add("court-assigned");
+                opponents.append(court);
+            }
         } else {
             const participant1 = this.createParticipant(
                 opponent1,
@@ -989,6 +1059,19 @@ export class BracketsViewer {
 
         if (found) {
             containers.name.innerHTML = `<span class="players">${found.name}</span>`;
+
+            if (roundNumber === 1 && participant.score === undefined) {
+                const swapButton = document.createElement("a");
+                swapButton.classList.add("swap");
+                swapButton.innerHTML =
+                    '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M388.9 266.3c-5.1-5-5.2-13.3-.1-18.4L436 200H211c-7.2 0-13-5.8-13-13s5.8-13 13-13h224.9l-47.2-47.9c-5-5.1-5-13.3.1-18.4 5.1-5 13.3-5 18.4.1l69 70c1.1 1.2 2.1 2.5 2.7 4.1.7 1.6 1 3.3 1 5 0 3.4-1.3 6.6-3.7 9.1l-69 70c-5 5.2-13.2 5.3-18.3.3zM123.1 404.3c5.1-5 5.2-13.3.1-18.4L76.1 338H301c7.2 0 13-5.8 13-13s-5.8-13-13-13H76.1l47.2-47.9c5-5.1 5-13.3-.1-18.4-5.1-5-13.3-5-18.4.1l-69 70c-1.1 1.2-2.1 2.5-2.7 4.1-.7 1.6-1 3.3-1 5 0 3.4 1.3 6.6 3.7 9.1l69 70c5 5.2 13.2 5.3 18.3.3z"></path></svg>';
+
+                swapButton.addEventListener("click", () =>
+                    this._onMatchSwapClick(participant)
+                );
+                containers.name.append(swapButton);
+            }
+
             containers.participant.setAttribute("title", found.name);
             this.renderParticipantImage(containers.name, found.id);
             this.renderParticipantOrigin(
