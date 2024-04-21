@@ -1094,14 +1094,18 @@ export class BracketsViewer {
             participant.games.forEach((game) => {
                 // @ts-ignore
                 let score = game[side]?.score;
-                if (!score) {
-                    score = "-";
+                if (score !== undefined) {
+                    if (game.opponent1?.result || game.opponent2?.result) {
+                        const span = document.createElement("span");
+                        span.setAttribute(
+                            "class",
+                            // @ts-ignore
+                            `game ${game[side]?.result || ""}`
+                        );
+                        span.innerText = `${score}`;
+                        containers.result.appendChild(span);
+                    }
                 }
-                const span = document.createElement("span");
-                // @ts-ignore
-                span.setAttribute("class", `game ${game[side]?.result || ""}`);
-                span.innerText = `${score}`;
-                containers.result.appendChild(span);
             });
         }
 
