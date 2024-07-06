@@ -1095,12 +1095,12 @@ export class BracketsViewer {
                 // @ts-ignore
                 let score = game[side]?.score;
                 if (score !== undefined) {
-                    console.log(game.opponent1?.score, game.opponent2?.score);
                     const zeros =
                         game.opponent1?.score === 0 &&
                         game.opponent2?.score === 0;
+
                     if (
-                        (game.opponent1?.result || game.opponent2?.result) &&
+                        // (game.opponent1?.result || game.opponent2?.result) &&
                         !zeros
                     ) {
                         const span = document.createElement("span");
