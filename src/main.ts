@@ -128,7 +128,6 @@ export class BracketsViewer {
             );
 
         const root = document.createDocumentFragment();
-
         this.config = {
             customRoundName: config?.customRoundName,
             participantOriginPlacement:
@@ -952,6 +951,12 @@ export class BracketsViewer {
                 court.classList.add("court-num");
                 court.innerText = `Court ${match.court}`;
                 opponents.classList.add("court-assigned");
+                opponents.append(court);
+            }
+            if ("duprMatchCode" in match && match.duprMatchCode) {
+                const court = document.createElement("div");
+                court.classList.add("dupr-id");
+                court.innerText = `DUPR ID: ${match.duprMatchCode}`;
                 opponents.append(court);
             }
         } else {

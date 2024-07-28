@@ -356,7 +356,6 @@ export function addParticipantOrigin(
 ): void {
     const span = document.createElement("span");
     span.setAttribute("class", "seed");
-
     if (placement === "before") {
         span.innerText = `${text} `;
         nameContainer.prepend(span);
