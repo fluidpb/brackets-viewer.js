@@ -949,7 +949,7 @@ export class BracketsViewer {
             if ("court" in match && match.court) {
                 const court = document.createElement("div");
                 court.classList.add("court-num");
-                court.innerText = `Court ${match.court}`;
+                court.innerText = match.court;
                 opponents.classList.add("court-assigned");
                 opponents.append(court);
             }
@@ -1093,7 +1093,6 @@ export class BracketsViewer {
                         game.opponent2?.score === 0;
                     
                     const negative = game.opponent1?.score === -1 || game.opponent2?.score == -1;
-
                     if (
                         // (game.opponent1?.result || game.opponent2?.result) &&
                         !zeros && !negative
