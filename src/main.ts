@@ -957,6 +957,7 @@ export class BracketsViewer {
                 opponents.append(court);
 
                 if ('courtAssignedDate' in match && match.courtAssignedDate) {
+                    let timer: any = null;
                     const startTime = new Date(match.courtAssignedDate as string).getTime();
                     let timeLapse = document.createElement('div');
                     timeLapse.classList.add('time-lapse');
@@ -973,11 +974,16 @@ export class BracketsViewer {
                         const minText = minutes < 10 ? `0${minutes}` : minutes;
                         const secText = seconds < 10 ? `0${seconds}` : seconds;
                         
-                        num.innerText = `${match.court} - ${hourText}${minText}:${secText}`;
+                        if (hours > 1) {
+                            num.innerText = `${match.court}`;
+                            clearInterval(timer);
+                        } else {
+                            num.innerText = `${match.court} - ${minText}:${secText}`;
+                        }
                     };
 
                     updateTimeLapse();
-                    setInterval(updateTimeLapse, 1000);
+                    timer = setInterval(updateTimeLapse, 1000);
                 }
                                 
                 if ('liveUrl' in match && match.liveUrl) {
