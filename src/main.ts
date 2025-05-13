@@ -946,13 +946,48 @@ export class BracketsViewer {
                 opponents.append(actions);
             }
 
-            if ("court" in match && match.court) {
+            if ("court" in match && match.court) { 
+                const num = document.createElement("div");
+                num.innerText = `${match.court}`;
+
                 const court = document.createElement("div");
                 court.classList.add("court-num");
-                court.innerText = match.court;
+                court.appendChild(num);
                 opponents.classList.add("court-assigned");
                 opponents.append(court);
+
+                if ('courtAssignedDate' in match && match.courtAssignedDate) {
+                    const startTime = new Date(match.courtAssignedDate as string).getTime();
+                    let timeLapse = document.createElement('div');
+                    timeLapse.classList.add('time-lapse');
+                    
+                    const updateTimeLapse = () => {
+                        const currentTime = new Date().getTime();
+                        const elapsedMs = currentTime - startTime;
+                        
+                        const hours = Math.floor(elapsedMs / (1000 * 60 * 60));
+                        const minutes = Math.floor((elapsedMs % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((elapsedMs % (1000 * 60)) / 1000);
+
+                        const hourText = hours > 0 ? `${hours}:` : '';
+                        const minText = minutes < 10 ? `0${minutes}` : minutes;
+                        const secText = seconds < 10 ? `0${seconds}` : seconds;
+                        
+                        num.innerText = `${match.court} - ${hourText}${minText}:${secText}`;
+                    };
+
+                    updateTimeLapse();
+                    setInterval(updateTimeLapse, 1000);
+                }
+                                
+                if ('liveUrl' in match && match.liveUrl) {
+                    const url = document.createElement("div");
+                    url.classList.add("live-url");
+                    url.innerHTML = `<a href="${match.liveUrl}" target="_blank"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8a2 2 0 0 0-2-2zm0 14H3V8h18v12zM9 10v8l7-4z"></path></svg></a>`;
+                    court.append(url);
+                }
             }
+                                
             if ("duprMatchCode" in match && match.duprMatchCode) {
                 const court = document.createElement("div");
                 court.classList.add("dupr-id");
